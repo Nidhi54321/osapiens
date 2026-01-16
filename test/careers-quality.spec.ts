@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('Careers page should have at least one Quality-related job', async ({ page }) => {
-  // Load the careers website
+ // Load the careers website
   await page.goto('https://careers.osapiens.com/');
   // Accept cookies if the banner appears
   // Improvement idea: Move this into a reusable helper or global setup
@@ -9,17 +9,18 @@ test('Careers page should have at least one Quality-related job', async ({ page 
   if (await acceptCookies.isVisible()) {
     await acceptCookies.click();
   }
-
-  // Locate all job title elements
+    // Locate all job title elements
   // Improvement idea: Use data-testids if available to make selectors more stable
   const jobTitles = page.locator('div.rt-table div[role="row"] a[href*="/postings"] > :nth-child(1)');
+
+  // Wait for the elements to be present in the DOM (even if hidden)
+  await jobTitles.first().waitFor({ state: 'attached' });
 
   // Get the number of open jobs
   const jobCount = await jobTitles.count();
 
   // Print number of open jobs to console
   console.log(`Number of open jobs: ${jobCount}`);
-
   // Fail the test immediately if no jobs are listed at all
   // Improvement idea: This could be a separate assertion/test
   expect(jobCount, 'No open jobs found on the careers page').toBeGreaterThan(0);
