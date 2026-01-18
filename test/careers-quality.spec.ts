@@ -1,48 +1,38 @@
 import { test, expect } from '@playwright/test';
-
+//Improvement idea: Page object model can be used for better structure and reusability
 test('Careers page should have at least one Quality-related job', async ({ page }) => {
- // Load the careers website
+  //Step-1: Loads the website
+  //Improvement idea: url can be moved to config or env variable for better flexibility
   await page.goto('https://careers.osapiens.com/');
-  // Accept cookies if the banner appears
   // Improvement idea: Move this into a reusable helper or global setup
+  // Improvement idea: we can use page.locator('button[data-role="all"]') as it has data attribute, below selector uses accessibility tree, making tests closer to real user interactions and more resilient to DOM change
   const acceptCookies = page.getByRole('button', { name: /accept/i });
   if (await acceptCookies.isVisible()) {
-    await acceptCookies.click();
-  }
-    // Locate all job title elements
-  // Improvement idea: Use data-testids if available to make selectors more stable
+      await acceptCookies.click();
+    }
+  // Improvement idea: Use ids or data-testids to make CSS selectors more stable
   const jobTitles = page.locator('div.rt-table div[role="row"] a[href*="/postings"] > :nth-child(1)');
-
   // Wait for the elements to be present in the DOM (even if hidden)
   await jobTitles.first().waitFor({ state: 'attached' });
-
-  // Get the number of open jobs
   const jobCount = await jobTitles.count();
 
-  // Print number of open jobs to console
+  //Step-2: Prints the number of open jobs
   console.log(`Number of open jobs: ${jobCount}`);
-  // Fail the test immediately if no jobs are listed at all
-  // Improvement idea: This could be a separate assertion/test
   expect(jobCount, 'No open jobs found on the careers page').toBeGreaterThan(0);
 
-  // Check if any job title contains the word "Quality"
-  let qualityJobFound = false;
+  //Step-3: Checks and fails the test if none of the job titles contains “Quality”
+  // avoided for loop and used filter method for better performance and cleaner code  
+  const qualityJobCount = await jobTitles.filter({ hasText: /Quality/i }).count();
+  expect(qualityJobCount,'No job title contains the word "Quality"').toBeGreaterThan(0);
+});
 
-  for (let i = 0; i < jobCount; i++) {
-    const titleText = (await jobTitles.nth(i).innerText()).toLowerCase();
-    if (titleText.includes('quality')) {
-      qualityJobFound = true;
-      break;
-    }
+// Adding hook to capture full page screenshots and logs on failure for easier debugging
+test.afterEach(async ({ page }, testInfo) => {
+  if (testInfo.status !== 'passed') {
+    const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+    await page.screenshot({ 
+      path: `test-results/failure-${testInfo.title}-${timestamp}.png`,
+      fullPage: true 
+    });
   }
-
-  // Fail the test if no job title contains "Quality"
-  // Improvement idea: Consider making the keyword configurable (env or test data)
-  expect(
-    qualityJobFound,
-    'No job title contains the word "Quality"'
-  ).toBe(true);
-
-  // Improvement idea: Add screenshots or tracing on failure for easier debugging
-  // Improvement idea: Validate job links open correct job detail pages
 });
