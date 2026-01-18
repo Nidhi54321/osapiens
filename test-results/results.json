@@ -46,7 +46,7 @@
     "quiet": false,
     "projects": [
       {
-        "outputDir": "/workspaces/osapiens/test-results",
+        "outputDir": "/workspaces/osapiens/test-results/attachments",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
@@ -79,7 +79,7 @@
       "specs": [
         {
           "title": "@smoke :Careers page should have at least one Quality-related job",
-          "ok": true,
+          "ok": false,
           "tags": [
             "smoke"
           ],
@@ -94,9 +94,28 @@
                 {
                   "workerIndex": 0,
                   "parallelIndex": 0,
-                  "status": "passed",
-                  "duration": 4897,
-                  "errors": [],
+                  "status": "failed",
+                  "duration": 10605,
+                  "error": {
+                    "message": "Error: No job title contains the word \"Quality\"\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m0\u001b[39m",
+                    "stack": "Error: No job title contains the word \"Quality\"\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m0\u001b[39m\n    at /workspaces/osapiens/test/careers-quality.spec.ts:27:70",
+                    "location": {
+                      "file": "/workspaces/osapiens/test/careers-quality.spec.ts",
+                      "column": 70,
+                      "line": 27
+                    },
+                    "snippet": "\u001b[0m \u001b[90m 25 |\u001b[39m   \u001b[90m// avoided for loop and used filter method for better performance and cleaner code  \u001b[39m\n \u001b[90m 26 |\u001b[39m   \u001b[36mconst\u001b[39m qualityJobCount \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m jobTitles\u001b[33m.\u001b[39mfilter({ hasText\u001b[33m:\u001b[39m \u001b[35m/Qualitye/i\u001b[39m })\u001b[33m.\u001b[39mcount()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 27 |\u001b[39m   expect(qualityJobCount\u001b[33m,\u001b[39m\u001b[32m'No job title contains the word \"Quality\"'\u001b[39m)\u001b[33m.\u001b[39mtoBeGreaterThan(\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 28 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 29 |\u001b[39m\n \u001b[90m 30 |\u001b[39m \u001b[90m// Adding hook to capture full page screenshots and logs on failure for easier debugging\u001b[39m\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspaces/osapiens/test/careers-quality.spec.ts",
+                        "column": 70,
+                        "line": 27
+                      },
+                      "message": "Error: No job title contains the word \"Quality\"\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m0\u001b[39m\n\n\u001b[0m \u001b[90m 25 |\u001b[39m   \u001b[90m// avoided for loop and used filter method for better performance and cleaner code  \u001b[39m\n \u001b[90m 26 |\u001b[39m   \u001b[36mconst\u001b[39m qualityJobCount \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m jobTitles\u001b[33m.\u001b[39mfilter({ hasText\u001b[33m:\u001b[39m \u001b[35m/Qualitye/i\u001b[39m })\u001b[33m.\u001b[39mcount()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 27 |\u001b[39m   expect(qualityJobCount\u001b[33m,\u001b[39m\u001b[32m'No job title contains the word \"Quality\"'\u001b[39m)\u001b[33m.\u001b[39mtoBeGreaterThan(\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 28 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 29 |\u001b[39m\n \u001b[90m 30 |\u001b[39m \u001b[90m// Adding hook to capture full page screenshots and logs on failure for easier debugging\u001b[39m\u001b[0m\n\u001b[2m    at /workspaces/osapiens/test/careers-quality.spec.ts:27:70\u001b[22m"
+                    }
+                  ],
                   "stdout": [
                     {
                       "text": "Number of open jobs: 39\n"
@@ -104,17 +123,33 @@
                   ],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-01-18T14:42:37.021Z",
+                  "startTime": "2026-01-18T15:07:36.846Z",
                   "annotations": [],
-                  "attachments": []
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/workspaces/osapiens/test-results/attachments/careers-quality--smoke-Car-32f9d-ast-one-Quality-related-job/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspaces/osapiens/test-results/attachments/careers-quality--smoke-Car-32f9d-ast-one-Quality-related-job/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspaces/osapiens/test/careers-quality.spec.ts",
+                    "column": 70,
+                    "line": 27
+                  }
                 }
               ],
-              "status": "expected"
+              "status": "unexpected"
             }
           ],
           "id": "6b73c28bc67a612e6186-79dce6df11538e12e966",
           "file": "careers-quality.spec.ts",
-          "line": 4,
+          "line": 5,
           "column": 5
         }
       ]
@@ -122,11 +157,11 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-01-18T14:42:36.313Z",
-    "duration": 5814.299999999999,
-    "expected": 1,
+    "startTime": "2026-01-18T15:07:36.066Z",
+    "duration": 11565.326,
+    "expected": 0,
     "skipped": 0,
-    "unexpected": 0,
+    "unexpected": 1,
     "flaky": 0
   }
 }

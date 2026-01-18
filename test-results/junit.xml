@@ -1,8 +1,38 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="5.814299999999999">
-<testsuite name="careers-quality.spec.ts" timestamp="2026-01-18T14:42:36.343Z" hostname="" tests="1" failures="0" skipped="0" time="4.897" errors="0">
-<testcase name="@smoke :Careers page should have at least one Quality-related job" classname="careers-quality.spec.ts" time="4.897">
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="11.565325999999999">
+<testsuite name="careers-quality.spec.ts" timestamp="2026-01-18T15:07:36.171Z" hostname="" tests="1" failures="1" skipped="0" time="10.605" errors="0">
+<testcase name="@smoke :Careers page should have at least one Quality-related job" classname="careers-quality.spec.ts" time="10.605">
+<failure message="careers-quality.spec.ts:5:5 @smoke :Careers page should have at least one Quality-related job" type="FAILURE">
+<![CDATA[  careers-quality.spec.ts:5:5 › @smoke :Careers page should have at least one Quality-related job ──
+
+    Error: No job title contains the word "Quality"
+
+    expect(received).toBeGreaterThan(expected)
+
+    Expected: > 0
+    Received:   0
+
+      25 |   // avoided for loop and used filter method for better performance and cleaner code  
+      26 |   const qualityJobCount = await jobTitles.filter({ hasText: /Qualitye/i }).count();
+    > 27 |   expect(qualityJobCount,'No job title contains the word "Quality"').toBeGreaterThan(0);
+         |                                                                      ^
+      28 | });
+      29 |
+      30 | // Adding hook to capture full page screenshots and logs on failure for easier debugging
+        at /workspaces/osapiens/test/careers-quality.spec.ts:27:70
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-results/attachments/careers-quality--smoke-Car-32f9d-ast-one-Quality-related-job/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-results/attachments/careers-quality--smoke-Car-32f9d-ast-one-Quality-related-job/error-context.md
+]]>
+</failure>
 <system-out>
 <![CDATA[Number of open jobs: 39
+
+[[ATTACHMENT|attachments/careers-quality--smoke-Car-32f9d-ast-one-Quality-related-job/test-failed-1.png]]
+
+[[ATTACHMENT|attachments/careers-quality--smoke-Car-32f9d-ast-one-Quality-related-job/error-context.md]]
 ]]>
 </system-out>
 </testcase>

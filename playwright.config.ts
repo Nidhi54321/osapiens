@@ -3,6 +3,7 @@ import { defineConfig } from '@playwright/test';
 export default defineConfig({
   testDir: 'test',
   timeout: 30000,
+  outputDir: 'test-results/attachments',
   use: {
     browserName: 'chromium',
     headless: true,
