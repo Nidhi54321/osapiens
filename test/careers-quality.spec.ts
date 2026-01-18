@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 //Improvement idea: Page object model can be used for better structure and reusability
-test('Careers page should have at least one Quality-related job', async ({ page }) => {
+//Improvement idea: Use cucumber or BDD style for better readability of test cases or for involving stakeholders
+test('@smoke :Careers page should have at least one Quality-related job', async ({ page }) => {
   //Step-1: Loads the website
   //Improvement idea: url can be moved to config or env variable for better flexibility
   await page.goto('https://careers.osapiens.com/');
