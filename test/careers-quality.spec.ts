@@ -1,11 +1,11 @@
 import { test, expect } from '@playwright/test';
-//Improvement idea: Page object model can be used for better structure and reusability
+//Improvement idea: Page object model and data-driven can be used for better structure and reusability
+//Improvement idea: add retries for flaky tests in the config file
 //Improvement idea: Use cucumber or BDD style for better readability of test cases or for involving stakeholders
 test('@smoke :Careers page should have at least one Quality-related job', async ({ page }) => {
   //Step-1: Loads the website
   //Improvement idea: url can be moved to config or env variable for better flexibility
   await page.goto('https://careers.osapiens.com/');
-  // Improvement idea: Move this into a reusable helper or global setup
   // Improvement idea: we can use page.locator('button[data-role="all"]') as it has data attribute, below selector uses accessibility tree, making tests closer to real user interactions and more resilient to DOM change
   const acceptCookies = page.getByRole('button', { name: /accept/i });
   if (await acceptCookies.isVisible()) {

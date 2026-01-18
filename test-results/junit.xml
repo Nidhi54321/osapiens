@@ -1,0 +1,10 @@
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="5.814299999999999">
+<testsuite name="careers-quality.spec.ts" timestamp="2026-01-18T14:42:36.343Z" hostname="" tests="1" failures="0" skipped="0" time="4.897" errors="0">
+<testcase name="@smoke :Careers page should have at least one Quality-related job" classname="careers-quality.spec.ts" time="4.897">
+<system-out>
+<![CDATA[Number of open jobs: 39
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>
